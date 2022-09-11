@@ -1,6 +1,8 @@
 #! /usr/local/bin/lua
 
-print("hello")
+local function println()
+	print("\n")
+end
 
 ------------ var
 local a = 5
@@ -18,14 +20,21 @@ print(type(print))
 print(type(type(print)))
 
 
+
+println()
+println()
+
+
 ---------- string
 
+print("hello")
 local name = "maxm"
 print(name)
 print("name.length=" .. #name)
 print("2" + 5)
 local name_upper = string.upper(name)
 print("string.upper("..name..")="..name_upper)
+-- 转换第1，3个字符为数字
 local name_upper_sneppet = string.byte(name_upper, 1, 3)
 print("name_upper_sneppet="..name_upper_sneppet)
 
@@ -35,6 +44,51 @@ local html = [[
 	hello html lan
 ]]
 print("html="..html)
+
+-- string replace
+local words = "welcome to the lua lua lua world"
+print("words="..words)
+local words1 = string.gsub(words, "lua", "go")
+print("words1="..words1)
+-- replace the first lua
+local words2 = string.gsub(words, "lua", "go", 1)
+print("words2="..words2)
+-- replace the 2 head word
+local words3 = string.gsub(words, "lua", "go", 2)
+print("words3=" .. words3)
+
+local lua_begin, lua_end = string.find(words, "lua")
+print("lua_begin=" .. lua_begin .. ", lua_end=" .. lua_end)
+local sub = string.sub(words, lua_begin, lua_end)
+print("sub=" .. sub)
+
+local format = string.format("welcome to the %s world", "lua")
+print("format=" .. format)
+
+-- 转换 words 的第 1 个字符为数字
+local first_byte = string.byte(words, 1)
+local first_char = string.char(first_byte)
+print("first_byte=" .. first_byte .. ",first_char=" .. first_char)
+
+local int_to_char = string.char(66,67,68,69,70)
+print("int_to_char=" .. int_to_char)
+
+
+local a_ = "a"
+local b_ = "b"
+-- string concat
+local c_ = a_ .. b_
+print("c_=" .. c_)
+print(string.format("c_=%s", "clang"))
+
+local lua = "lua"
+local lua3 = string.rep(lua, 3)
+print("lua3 = " .. lua3)
+
+println()
+println()
+
+
 
 ----------- table
 
@@ -99,7 +153,7 @@ local function gettablelen(tab)
 	return #tab
 end
 print("fruts.length="..gettablelen(fruts))
-fruts[30] = "strawberry"
+fruts[30] = "strafirst_charerry"
 print("fruts.length="..gettablelen(fruts))
 
 local function gettablelen2(tab)
@@ -136,6 +190,10 @@ fruts = nil
 
 print("fruit_copy={" .. table.concat(fruit_copy, ",") .. "}")
 fruit_copy = nil
+
+println()
+println()
+
 
 ----------- file
 
