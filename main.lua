@@ -223,6 +223,16 @@ local lines = file_read("1.json")
 print("lines="..table.concat(lines))
 
 
+-- 引入 1 个模块
+local card = require "card"
 
+card.detail()
+card.addExp(3)
 
+card.detail()
+card.addExp(8)
+
+card.detail()
+card.addExp(9)
+card.detail()
 
