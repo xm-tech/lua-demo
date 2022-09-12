@@ -234,5 +234,8 @@ card.addExp(8)
 
 card.detail()
 card.addExp(9)
+
+card.detail()
+card.setStarNum(11)
 card.detail()
 
