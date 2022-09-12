@@ -33,6 +33,12 @@ function card.getLevel()
 	return card.level or 1
 end
 
+function card.reset()
+	card.exp = 0
+	card.level = 1
+	card.starNum = 0
+end
+
 function card.detail()
 	print("card.exp=" .. card.getExp() .. ",card.level=" .. card.getLevel() .. ",card.starNum=" .. card.getStarNum())
 end
