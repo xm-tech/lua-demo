@@ -44,9 +44,4 @@ function card.detail()
 end
 
 
--- card.addExp(5)
--- print("Card.exp="..card.getExp()..",Card.level="..card.level)
--- card.addExp(11)
--- print("Card.exp="..card.getExp()..",Card.level="..card.level)
-
 return card
