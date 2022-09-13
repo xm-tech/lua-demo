@@ -3,7 +3,7 @@
 require "common"
 
 -- resume 处于主线程，它将外部状态（数据）传入到协程内部；而协程内部的 yield 则将内部的状态（生产的数据）发送到主线程
-producer = coroutine.create(function (data)
+local producer = coroutine.create(function (data)
 	local i = 0
 	while i < 3 do
 		i = i + 1
@@ -22,10 +22,13 @@ function start_consumer()
 		G_sleep(1)
 		-- resume 处于主线程，外部参数(状态)传入到协程内部, 这里是 "lua" 字符串, 而 返回值 status, val 是收到的协同程序返回的数据
 		local status, val = coroutine.resume(producer, "lua")
-		print("cosumed: ", status, val)
 		if status ~= true then
 			break
 		end
+		if val == nil then
+			break
+		end
+		print("cosumed: ", val)
 	end
 end
 
