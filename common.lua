@@ -13,3 +13,7 @@ function L_decode(str)
 	print("L_decode("..str..")")
 	return cjson.decode(str)
 end
+
+function G_sleep(second)
+	os.execute("sleep " .. tonumber(second))
+end

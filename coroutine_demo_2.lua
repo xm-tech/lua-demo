@@ -1,7 +1,7 @@
 function foo(a)
 	print("foo,a=", a)
 	assert(a == 2 , "a is not 2")
-	-- return 2 * a to the caller
+	-- return 2 * a to the main coroutin
 	return coroutine.yield(2 * a)
 end
 
@@ -15,6 +15,10 @@ local c = coroutine.create(function (a, b)
 	return b, "end"
 end)
 
+-- resume 和 yield 的配合强大之处在于，resume 处于主线程中，它将外部状态（数据）传入到协同程序内部；而 yield 则将内部的状态（数据）返回到主线程中。
+-- will get true, 4
 print("main.1", coroutine.resume(c, 1, 2))
+-- will get true, 3 , -1
 print("main.2", coroutine.resume(c, 10))
+-- will get true, 2, end
 print("main.3", coroutine.resume(c, "lua", "rust"))
