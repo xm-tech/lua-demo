@@ -1,8 +1,4 @@
-#! /usr/local/bin/lua
-
-local function println()
-	print("\n")
-end
+require "common"
 
 ------------ var
 local a = 5
@@ -238,4 +234,29 @@ card.addExp(9)
 card.detail()
 card.setStarNum(11)
 card.detail()
+
+-------------- json
+local json = require "cjson"
+-- encode table to json
+local json_out = json.encode({ 1, 2, 3, { x = 10  }  })
+print("json_out = " .. json_out)
+
+print(json_out)
+local json_decode = json.decode(json_out)
+print(json_decode[1] .. "," .. json_decode[2])
+print(json_decode[4].x)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
