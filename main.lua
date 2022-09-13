@@ -1,5 +1,8 @@
 require "common"
 
+
+local cjson = require "cjson"
+
 ------------ var
 local a = 5
 print("a="..a)
@@ -187,6 +190,17 @@ fruts = nil
 print("fruit_copy={" .. table.concat(fruit_copy, ",") .. "}")
 fruit_copy = nil
 
+
+-- metatable
+local age = "33"
+local int_meta_table = getmetatable(age)
+print(int_meta_table)
+-- local int_meta_func = rawget(getmetatable(age) or {}, '__index')
+-- print("int_meta_func:")
+
+-- cjson.encode(int_meta_table)
+--
+
 println()
 println()
 
@@ -236,16 +250,20 @@ card.setStarNum(11)
 card.detail()
 
 -------------- json
-local json = require "cjson"
 -- encode table to json
-local json_out = json.encode({ 1, 2, 3, { x = 10  }  })
+local input = { 1, 2, 3, { x = 10  }  }
+local json_out = cjson.encode(input)
+print("json_out = " .. json_out)
+json_out = L_encode(input)
 print("json_out = " .. json_out)
 
+-- decode from json str
 print(json_out)
-local json_decode = json.decode(json_out)
+local json_decode = cjson.decode(json_out)
+json_decode = L_decode(json_out)
 print(json_decode[1] .. "," .. json_decode[2])
 print(json_decode[4].x)
-
+print(cjson.encode(lines))
 
 
 
