@@ -21,7 +21,7 @@ function start_consumer()
 	while true do
 		G_sleep(1)
 		-- resume 处于主线程，外部参数(状态)传入到协程内部, 这里是 "lua" 字符串, 而 返回值 val 是收到的协同程序下发的数据, status 是结果状态
-		-- resume 的返回值是 yield 下发的, 这里 resume 相当去是唤醒协同程序
+		-- resume 的返回值是 yield 下发的, 这里 resume 相当于是唤醒协同程序
 		local status, val = coroutine.resume(producer, "lua")
 		if status ~= true then
 			break

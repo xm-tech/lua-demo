@@ -26,7 +26,7 @@ co3 = coroutine.create(function ()
 	end
 end)
 -- co3.status is suspended after co3 is created
--- 刚创建的携程，出于挂起(suspend)状态
+-- 刚创建的携程，处于挂起(suspend)状态
 print("co3.status="..coroutine.status(co3))
 -- will wake up the current yielded coroutine
 coroutine.resume(co3)
