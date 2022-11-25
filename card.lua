@@ -4,6 +4,7 @@ local card = {}
 -- 卡牌等级经验数据
 local card_exp_data = { 10, 20, 30, 40, 50 }
 
+-- 增加卡牌经验 exp 点
 function card.addExp(exp)
 	card.exp = card.getExp() + exp
 	for i = 1, #card_exp_data, 1 do
@@ -39,6 +40,7 @@ function card.reset()
 	card.starNum = 0
 end
 
+-- 打印卡牌当前详情
 function card.detail()
 	print("card.exp=" .. card.getExp() .. ",card.level=" .. card.getLevel() .. ",card.starNum=" .. card.getStarNum())
 end

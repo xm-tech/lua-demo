@@ -238,6 +238,8 @@ local card = require "card"
 
 card.detail()
 card.addExp(3)
+-- equal to addExp(9)
+card.addExp "9"
 
 card.detail()
 card.addExp(8)
