@@ -2,8 +2,8 @@
 	lua 可变参数 demo
 ]]
 
--- 接受传给本脚本的调用参数
-local cmd_args = {...}
+-- 接收传给本脚本的调用参数
+local script_args = {...}
 
 local function eat_fruit(person, ...)
 	local args = {...}
@@ -15,7 +15,7 @@ end
 
 eat_fruit("vimer", "apple", "orange")
 
-print("cmd_args:")
-for _, parg in pairs(cmd_args) do
+print("args passed to the script:")
+for _, parg in pairs(script_args) do
 	print(parg)
 end
