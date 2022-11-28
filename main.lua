@@ -27,6 +27,10 @@ println()
 ---------- string
 
 print("hello")
+local hello = "hello"
+print(hello)
+hello = hello:upper()
+print(hello)
 local name = "maxm"
 print(name)
 print("name.length=" .. #name)
