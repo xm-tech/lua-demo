@@ -11,7 +11,7 @@ local c = coroutine.create(function (a, b)
 	foo(a + 1)
 	-- return a+b , a-b to the caller, while the r, s will be the params from the next resume call
 	local r, s = coroutine.yield(a + b, a - b)
-	-- (r,s) == ("lua", "rustt")
+	-- (r,s) == ("lua", "rustt"), r, s here are the params passed from outside, it is amazing !!
 	print("co.2",r,s)
 	-- return b, "end" to the caller
 	return b, "end"
