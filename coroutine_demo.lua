@@ -4,17 +4,15 @@ local add = function (i, j)
 end
 local co = coroutine.create(function (i, j)
 	local ret = add(i,j)
-	print("co,ret="..ret)
+	return ret
 end)
 
-print(coroutine.status(co))
-coroutine.resume(co, 3, 5)
-print(coroutine.status(co))
-
-print("----")
+print("co.status:", coroutine.status(co))
+local coret, coval=coroutine.resume(co, 3, 5)
+print("coret:", coret, ",coval:", coval, "co.status:", coroutine.status(co))
 
 local co2 = coroutine.wrap(function (i)
-	print("co2,i="..i)
+	print("wrap(co) will return a new function('co2' here), i="..i)
 end)
 co2(1)
 
@@ -23,8 +21,7 @@ co3 = coroutine.create(function ()
 	for i=1, 10 do
 		print("co3,i=" .. i)
 		if i == 3 then
-			print("co3.status=" .. coroutine.status(co3))
-			print(coroutine.running())
+			print("co3.status=" .. coroutine.status(co3) .. ", ", coroutine.running())
 		end
 		-- yield the current thread, will be wakedup by resume agin
 		coroutine.yield()
@@ -38,5 +35,4 @@ coroutine.resume(co3)
 coroutine.resume(co3)
 coroutine.resume(co3)
 
-print(coroutine.status(co3))
-print(coroutine.running())
+print("co3.status="..coroutine.status(co3) .. ", ", coroutine.running())
