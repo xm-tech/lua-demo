@@ -23,8 +23,18 @@ print(type(type(print)))
 println()
 println()
 
+local quoteStr = function (str)
+	return '"'..string.gsub(str, '"', '\\"')..'"'
+end
+local outSemi = function ()
+	print("outSemi", '\\"')
+end
+print("quoteStr:", quoteStr("hell\"o"))
+outSemi()
 
 ---------- string
+local rep = string.rep("g", 3, "|")
+print("rep", rep)
 
 print("hello")
 local hello = "hello"

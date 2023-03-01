@@ -2,7 +2,8 @@
 local Account = {balance = 0, limit = 0}
 function Account:new(o)
 	o = o or {}
-	-- self here is the table Account itself
+	-- make self a prototype for o, self here is the table Account itself
+	-- 当通过键来访问 table 的时候，如果这个键没值，那么Lua就会寻找该table的metatable（假定有metatable）中的__index 键。如果__index包含一个表格，Lua会在表格中查找相应的键。
 	setmetatable(o, self)
 	self.__index = self
 	return o

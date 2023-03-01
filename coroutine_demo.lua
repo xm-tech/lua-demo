@@ -1,5 +1,10 @@
+local add = function (i, j)
+	print("add(" .. i .. "," .. j..")")
+	return i + j
+end
 local co = coroutine.create(function (i, j)
-	print("co,i="..i..",j="..j)
+	local ret = add(i,j)
+	print("co,ret="..ret)
 end)
 
 print(coroutine.status(co))

@@ -45,5 +45,10 @@ function card.detail()
 	print("card.exp=" .. card.getExp() .. ",card.level=" .. card.getLevel() .. ",card.starNum=" .. card.getStarNum())
 end
 
+card.addExp(3)
+card.detail()
+local card2 = card
+card2.addExp(3)
+card2.detail()
 
 return card
