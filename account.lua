@@ -1,5 +1,5 @@
 -- the oo demo
-local Account = {balance = 0, limit = 0}
+local Account = {balance = 3, limit = 0}
 function Account:new(o)
 	o = o or {}
 	-- make self a prototype for o, self here is the table Account itself
@@ -22,8 +22,15 @@ function Account:withdraw(money)
 	self.balance = self.balance - money
 end
 
-local account0 = Account:new()
-local account1 = Account:new()
+local t = {}
+t = nil -- if t not nil then account0 and account1 will be the same
+local account0 = Account:new(t)
+local account1 = Account:new(t)
+
+account0:withdraw(1)
+
+account0 = Account:new()
+account1 = Account:new()
 
 print("account0.balance=", account0.balance)
 print("account1.balance=", account1.balance)
